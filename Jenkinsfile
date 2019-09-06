@@ -5,7 +5,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh -c "sudo cp -rpf index.html /var/www/html/"
+                sh "sudo cp -rpf index.html /var/www/html/"
             }
         }
     }
