@@ -8,7 +8,7 @@
     </title>
 </head>
 
-<body>
+<body onload="getGear()">
 
     <!-- <button onclick="getGear()">Clicky</button> -->
 
@@ -74,19 +74,20 @@
         <input type="submit" value="Save">
     </form> -->
 
-    <form id="buildform" onsubmit="return handleForm()">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01" id="item_type"></label>
-            </div>
-            <select class="custom-select" onclick="console.log('cheese')">
-                <option selected>Options...</option>
-                <div id="options">
-
-                    <option id="blank"></option>
+    <form id="buildform">
+        <div id="dest">
+            <div class="input-group mb-3" id="toclone">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01" id="item_type">Ring</label>
                 </div>
-            </select>
+                <select id="selectorring" class="custom-select" onclick="getGear()">
+                    <option selected>Options...</option>
+                    <div id="options">
+
+                        <!-- <option id="blank"></option> -->
+                    </div>
+                </select>
+            </div>
         </div>
         <input type="submit" value="Save">
     </form>
