@@ -56,11 +56,11 @@ function httpRequest(method, url, callback, headers, body) {
 function populateGearOptions(req) {
     const allGear = JSON.parse(req.response);
 
-    for(let gear of allGear) {
+    for (let gear of allGear) {
         const typeObj = types2.find(val => gear.type == val.typeId);
         const selectEl = typeObj.elementRef.getElementsByTagName('select')[0];
         const gearOptionEl = document.createElement('option');
-        gearOptionEl.value = gear.type;
+        gearOptionEl.value = gear.id;
         gearOptionEl.innerText = gear.name;
 
         selectEl.appendChild(gearOptionEl);
@@ -81,27 +81,6 @@ function getGear() {
 
 }
 
-function saveBuild() {
-    let method = "POST";
-    let url = "http://localhost:9000/character";
-
-    // var e = document.getElementById("RingSelector"); // logic for getting the value or innertext out of the dropdown form
-    // var strUser = e.options[e.selectedIndex].text;
-    // console.log(strUser);
-    // console.log(e.options[e.selectedIndex].value);
-
-    let callback = printy;
-    let header = {
-        "Content-Type": "application/json"
-    }
-
-    httpRequest(method, url, callback, header);
-
-
-    //httpRequest(method,url,)
-    //return false;
-}
-
 
 function cloneobj() {
     const toCloneEl = document.getElementById("toclone");
@@ -110,14 +89,12 @@ function cloneobj() {
         type.elementRef = clone;
         clone.setAttribute('typeId', type.typeId);
         clone.setAttribute('id', `type_${type.typeId}`);
+        //idChange = document.getElementById("selectorring");
+        //idChange.setAttribute("id",type.name);
         clone.getElementsByTagName('label')[0].innerText = type.name;
         toCloneEl.parentElement.appendChild(clone);
     }
     toCloneEl.parentElement.removeChild(toCloneEl);
-
-
-
-
 
 
     // for (let j = 1; j < 3; j++) {
@@ -143,5 +120,34 @@ function maxLength(data) {
     }
     return maximum;
 }
+
+function onSavePressed(form) {
+    let body = {};
+
+    let usrvalue = [];
+    let e = document.getElementsByClassName("custom-select");
+    for(let i = 0; i < e.length; i++){
+        
+        usrvalue[i] = e[i].options[e[i].selectedIndex].value;
+        console.log(usrvalue);
+        body[types2[i].name.toLowerCase()] = usrvalue[i]
+    }
+
+    console.log(body);
+
+    let method = "POST";
+    let url = "http://localhost:9000/character";
+
+    let callback = (request) => { console.log(request.response) };
+    let header = {
+        "Content-Type": "application/json"
+    }
+
+    httpRequest(method, url, callback, header, JSON.stringify(body));
+    //method, url, callback, headers, body
+    window.location.href = "saved_builds.html";
+    return false;
+}
+
 
 cloneobj();

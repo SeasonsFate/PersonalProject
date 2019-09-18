@@ -3,6 +3,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <head>
+        <link rel="shortcut icon" href="">
     <title>
         Black Desert Build Planner
     </title>
@@ -74,7 +75,7 @@
         <input type="submit" value="Save">
     </form> -->
 
-    <form id="buildform">
+    <form id="buildform" onsubmit="return onSavePressed(this)">
         <div id="dest">
             <div class="input-group mb-3" id="toclone">
                 <div class="input-group-prepend">
