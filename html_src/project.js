@@ -124,16 +124,23 @@ function maxLength(data) {
 function onSavePressed(form) {
     let body = {};
 
-    let usrvalue = [];
-    let e = document.getElementsByClassName("custom-select");
-    for(let i = 0; i < e.length; i++){
+    // let usrvalue = [];
+    // let e = document.getElementsByClassName("custom-select");
+    // for(let i = 0; i < e.length; i++){
         
-        usrvalue[i] = e[i].options[e[i].selectedIndex].value;
-        console.log(usrvalue);
-        body[types2[i].name.toLowerCase()] = usrvalue[i]
-    }
+    //     usrvalue[i] = e[i].options[e[i].selectedIndex].value;
+    //     console.log(usrvalue);
+    //     body[types2[i].name.toLowerCase()] = usrvalue[i]
+    // }
 
-    console.log(body);
+    let namedOptions = document.getElementsByClassName("custom-select");
+    console.log(namedOptions);
+    let i = 0;
+    for(let option of namedOptions){
+        let selected = option.selectedIndex;
+        usrvalue = option.options[selected].value;
+        body[types2[i++].name.toLowerCase()] = usrvalue;
+    }
 
     let method = "POST";
     let url = "http://localhost:9000/character";
