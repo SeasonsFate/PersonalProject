@@ -21,7 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="builds.html">Current Build</a>
                 </li>
-                <li class="nav-item active" >
+                <li class="nav-item active">
                     <a class="nav-link" href="saved_builds.html">Saved Builds<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
@@ -29,30 +29,16 @@
     </nav>
 
     <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>  
+        <thead>
+            <tr>
+                <th scope="col">#</th>
                 <th scope="col">Build Name</th>
                 <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>yes</td>
-                <td>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>no</td>
-                <td>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            </tr>
+        </thead>
+        <tbody id="appendbelow"></tbody>
+    </table>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -62,6 +48,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script src="project.js"></script>
+    <script src="saved_builds.js"></script>
 
 </body>
 

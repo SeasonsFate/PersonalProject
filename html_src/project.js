@@ -69,6 +69,8 @@ function populateGearOptions(req) {
 
 }
 
+
+
 function getGear() {
     let method = "GET";
     let url = "http://localhost:9000/item";
@@ -142,6 +144,11 @@ function onSavePressed(form) {
         body[types2[i++].name.toLowerCase()] = usrvalue;
     }
 
+    let buildnameinput = document.getElementById("buildnameinput").value;
+    //console.log(buildname);
+
+    body["buildname"] = buildnameinput;
+
     let method = "POST";
     let url = "http://localhost:9000/character";
 
@@ -157,4 +164,4 @@ function onSavePressed(form) {
 }
 
 
-cloneobj();
+ cloneobj();
