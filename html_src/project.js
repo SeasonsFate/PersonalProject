@@ -162,6 +162,3 @@ function onSavePressed(form) {
     window.location.href = "saved_builds.html";
     return false;
 }
-
-
- cloneobj();

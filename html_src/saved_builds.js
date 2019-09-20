@@ -21,8 +21,12 @@ function populateTable(req){
         // Create delete action button
         const deleteButtonEl = document.createElement('button');
         deleteButtonEl.innerText = 'Delete';
+        deleteButtonEl.type = 'button';
         deleteButtonEl.className = 'btn btn-danger';
-        deleteButtonEl.addEventListener('click', () => console.warn('Delete clicked for ', build));
+        deleteButtonEl.setAttribute("id",build["id"])
+        //deleteButtonEl.addEventListener('click',console.log(build["id"]));
+        deleteButtonEl.setAttribute("onclick","deleteBuild(this.id)");
+        //deletebuild(build["id"]);
         actionsCellEl.append(deleteButtonEl);
         
         trEl.append(actionsCellEl);
@@ -30,6 +34,18 @@ function populateTable(req){
     }
     // debugger;
     
+}
+
+function deleteBuild(clicked_id){
+    console.log(clicked_id);
+
+    let method = "DELETE";
+    let url = `http://localhost:9000/character/${clicked_id}`;
+    let callback = () => console.warn('LLLLLLLLDelete clicked for ', clicked_id);
+    let header = {
+        "Content-Type": "application/json"
+    }
+    httpRequest(method,url,callback,header);
 }
 
 function getBuilds(){
@@ -44,18 +60,11 @@ function getBuilds(){
     httpRequest(method, url, callback, header);
 }
 
-function httpRequest(method, url, callback, headers, body) {
-    request = new XMLHttpRequest();
-    request.open(method, url);
+function refreshTable(){
 
-    for (let key in headers) {
-        request.setRequestHeader(key, headers[key]);
-    }
-
-    request.onload = () => {
-        callback(request);
-    }
-
-    body ? request.send(body) : request.send();
 }
+
+
+
+
 
