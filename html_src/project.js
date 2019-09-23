@@ -111,8 +111,6 @@ function cloneobj() {
     getGear();
 }
 
-
-
 function maxLength(data) {
     let maximum = data[0].type
     for (let j = 1; j < data.length; j++) {

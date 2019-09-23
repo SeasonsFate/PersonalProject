@@ -1,4 +1,8 @@
 function populateTable(req){
+    console.log(req)
+
+    // location.reload();
+
     const allBuilds = JSON.parse(req.response);
 
     const columns = [
@@ -28,7 +32,18 @@ function populateTable(req){
         deleteButtonEl.setAttribute("onclick","deleteBuild(this.id)");
         //deletebuild(build["id"]);
         actionsCellEl.append(deleteButtonEl);
-        
+        const editButtonEl = document.createElement('button');
+        editButtonEl.innerText = 'View';
+        editButtonEl.type = 'button';
+        editButtonEl.className = 'btn btn-success';
+        editButtonEl.setAttribute("data-toggle","modal")
+        editButtonEl.setAttribute("data-target","#gearModal")
+        //deleteButtonEl.addEventListener('click',console.log(build["id"]));
+        //editButtonEl.setAttribute("onclick",);
+        //deletebuild(build["id"]);
+        actionsCellEl.append(deleteButtonEl);
+        actionsCellEl.append(editButtonEl);
+
         trEl.append(actionsCellEl);
         tBodyEl.append(trEl);
     }
@@ -41,11 +56,14 @@ function deleteBuild(clicked_id){
 
     let method = "DELETE";
     let url = `http://localhost:9000/character/${clicked_id}`;
-    let callback = () => console.warn('LLLLLLLLDelete clicked for ', clicked_id);
+    let callback = console.warn("delete pressed for build id", clicked_id);
     let header = {
         "Content-Type": "application/json"
     }
     httpRequest(method,url,callback,header);
+
+    location.reload();
+
 }
 
 function getBuilds(){
@@ -60,11 +78,16 @@ function getBuilds(){
     httpRequest(method, url, callback, header);
 }
 
-function refreshTable(){
+
+function getOneBuild(clicked_id){
+
+    let method = "GET";
+    let url = "http://localhost:9000/character"
+
+    let callback = populateTable;
+    let header = {
+        "Content-Type": "application/json"
+    }
+    httpRequest(method, url, callback, header);
 
 }
-
-
-
-
-
