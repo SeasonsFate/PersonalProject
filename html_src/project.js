@@ -1,4 +1,5 @@
 //const types = ["Ring", "Earring", "Necklace"];
+let clonedModal = 0;
 
 const types2 = [
     { typeId: 1, name: 'Ring', elementRef: null },
@@ -72,6 +73,7 @@ function populateGearOptions(req) {
 
 
 function getGear() {
+    //console.log("here")
     let method = "GET";
     let url = "http://localhost:9000/item";
     let callback = populateGearOptions;
@@ -85,30 +87,40 @@ function getGear() {
 
 
 function cloneobj() {
-    const toCloneEl = document.getElementById("toclone");
-    for (let type of types2) {
-        let clone = toCloneEl.cloneNode(true);
-        type.elementRef = clone;
-        clone.setAttribute('typeId', type.typeId);
-        clone.setAttribute('id', `type_${type.typeId}`);
-        //idChange = document.getElementById("selectorring");
-        //idChange.setAttribute("id",type.name);
-        clone.getElementsByTagName('label')[0].innerText = type.name;
-        toCloneEl.parentElement.appendChild(clone);
+    if (clonedModal == 0) {
+        const toCloneEl = document.getElementById("toclone");
+        for (let type of types2) {
+            let clone = toCloneEl.cloneNode(true);
+            type.elementRef = clone;
+            clone.setAttribute('typeId', type.typeId);
+            clone.setAttribute('id', `type_${type.typeId}`);
+            //idChange = document.getElementById("selectorring");
+            //idChange.setAttribute("id",type.name);
+            clone.getElementsByTagName('label')[0].innerText = type.name;
+            toCloneEl.parentElement.appendChild(clone);
+        }
+        toCloneEl.parentElement.removeChild(toCloneEl);
+
+
+        // for (let j = 1; j < 3; j++) {
+        //     // Create a clone of element with id ddl_1:
+        //     let clone = document.getElementById("toclone").cloneNode(true);
+        //     // Change the id attribute of the newly created element:
+        //     clone.setAttribute('id', "cloned" + j);
+        //     // Append the newly created element on element p 
+        //     document.getElementById("dest").appendChild(clone);
+
+        // }
+        // if(!(clicked_id)){
+        //     getGear();
+        // }else{
+        //     getGear(clicked_id)
+        // }
+        getGear()
+        clonedModal++;
+    } else {
+        console.log("already cloned");
     }
-    toCloneEl.parentElement.removeChild(toCloneEl);
-
-
-    // for (let j = 1; j < 3; j++) {
-    //     // Create a clone of element with id ddl_1:
-    //     let clone = document.getElementById("toclone").cloneNode(true);
-    //     // Change the id attribute of the newly created element:
-    //     clone.setAttribute('id', "cloned" + j);
-    //     // Append the newly created element on element p 
-    //     document.getElementById("dest").appendChild(clone);
-
-    // }
-    getGear();
 }
 
 function maxLength(data) {
@@ -127,7 +139,7 @@ function onSavePressed(form) {
     // let usrvalue = [];
     // let e = document.getElementsByClassName("custom-select");
     // for(let i = 0; i < e.length; i++){
-        
+
     //     usrvalue[i] = e[i].options[e[i].selectedIndex].value;
     //     console.log(usrvalue);
     //     body[types2[i].name.toLowerCase()] = usrvalue[i]
@@ -136,7 +148,7 @@ function onSavePressed(form) {
     let namedOptions = document.getElementsByClassName("custom-select");
     console.log(namedOptions);
     let i = 0;
-    for(let option of namedOptions){
+    for (let option of namedOptions) {
         let selected = option.selectedIndex;
         usrvalue = option.options[selected].value;
         body[types2[i++].name.toLowerCase()] = usrvalue;
@@ -162,5 +174,6 @@ function onSavePressed(form) {
 }
 
 
-$('#gearModal').on('show.bs.modal', cloneobj())
+
+$("#gearModal").on("show.bs.modal", cloneobj);
 

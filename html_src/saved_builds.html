@@ -33,6 +33,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Build Name</th>
+                <th scope="col">Earring</th>
+                <th scope="col">Necklace</th>
+                <th scope="col">Ring</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -49,7 +52,9 @@
               </button>
             </div>
             <div class="modal-body">
-                    <form id="buildform">
+                    <form id="buildform" onsubmit="return updateGear(this)">
+                        <input type="hidden" id="buildId" name="buildId">
+                        <input type="hidden" id="buildName">
                             <div id="dest">
                                 <div class="input-group mb-3" id="toclone">
                                     <div class="input-group-prepend">
@@ -60,17 +65,12 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                    <label for="buildnameinput">Build Name</label>
-                                    <input class="form-control" id="buildnameinput" placeholder="Enter Build Name">
-                                  </div>
-                            <input type="submit" value="Save">
+                            <input type="submit" class="btn btn-primary" value="Save">
                         </form>
                     
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>

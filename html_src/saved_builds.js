@@ -6,7 +6,7 @@ function populateTable(req){
     const allBuilds = JSON.parse(req.response);
 
     const columns = [
-        'id', 'buildname'
+        'id', 'buildname', "earring", "necklace", "ring"
     ];
 
     const tBodyEl = document.getElementById('appendbelow');
@@ -38,14 +38,18 @@ function populateTable(req){
         editButtonEl.className = 'btn btn-success';
         editButtonEl.setAttribute("data-toggle","modal")
         editButtonEl.setAttribute("data-target","#gearModal")
-        //deleteButtonEl.addEventListener('click',console.log(build["id"]));
-        //editButtonEl.setAttribute("onclick",);
-        //deletebuild(build["id"]);
+        editButtonEl.setAttribute("id",build["id"])
+
+        editButtonEl.setAttribute("name",build["buildname"])
+
+        editButtonEl.setAttribute("onclick","updateField(this.id,this.name)");
+
         actionsCellEl.append(deleteButtonEl);
         actionsCellEl.append(editButtonEl);
 
         trEl.append(actionsCellEl);
         tBodyEl.append(trEl);
+        
     }
     // debugger;
     
@@ -67,7 +71,6 @@ function deleteBuild(clicked_id){
 }
 
 function getBuilds(){
-
     let method = "GET";
     let url = "http://localhost:9000/character"
 
@@ -79,15 +82,41 @@ function getBuilds(){
 }
 
 
-function getOneBuild(clicked_id){
+function updateGear(){
 
-    let method = "GET";
-    let url = "http://localhost:9000/character"
+    let id = document.getElementById("buildId").value;
+    console.log("here",id);
+    let buildnameinput = document.getElementById("buildName").value;
+    console.log("here",name);
 
-    let callback = populateTable;
+    let body = {};
+
+    let namedOptions = document.getElementsByClassName("custom-select");
+    console.log(namedOptions);
+    let i = 0;
+    for (let option of namedOptions) {
+        let selected = option.selectedIndex;
+        usrvalue = option.options[selected].value;
+        body[types2[i++].name.toLowerCase()] = usrvalue;
+    }
+
+    body["buildname"] = buildnameinput;
+
+    let method = "PUT";
+    let url = `http://localhost:9000/character/${id}`
+
+    let callback = () => {console.log(request.response)};
     let header = {
         "Content-Type": "application/json"
     }
-    httpRequest(method, url, callback, header);
+    httpRequest(method, url, callback, header, JSON.stringify(body));
+    location.reload();
+    return false;
+ }
 
+function updateField(clicked_id,clicked_name){
+    let buildId = document.getElementById("buildId");
+    buildId.setAttribute("value",clicked_id)
+    let buildName = document.getElementById("buildName")
+    buildName.setAttribute("value",clicked_name)
 }
