@@ -75,7 +75,7 @@ function populateGearOptions(req) {
 function getGear() {
     //console.log("here")
     let method = "GET";
-    let url = "http://localhost:9000/item";
+    let url = "http://35.246.117.181:9000/item";
     let callback = populateGearOptions;
     let header = {
         "Content-Type": "application/json"
@@ -160,7 +160,7 @@ function onSavePressed(form) {
     body["buildname"] = buildnameinput;
 
     let method = "POST";
-    let url = "http://localhost:9000/character";
+    let url = "http://35.246.117.181:9000/character";
 
     let callback = (request) => { console.log(request.response) };
     let header = {

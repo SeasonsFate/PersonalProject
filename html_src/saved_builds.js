@@ -59,7 +59,7 @@ function deleteBuild(clicked_id){
     console.log(clicked_id);
 
     let method = "DELETE";
-    let url = `http://localhost:9000/character/${clicked_id}`;
+    let url = `http://35.246.117.181:9000/character/${clicked_id}`;
     let callback = console.warn("delete pressed for build id", clicked_id);
     let header = {
         "Content-Type": "application/json"
@@ -72,7 +72,7 @@ function deleteBuild(clicked_id){
 
 function getBuilds(){
     let method = "GET";
-    let url = "http://localhost:9000/character"
+    let url = "http://35.246.117.181:9000/character"
 
     let callback = populateTable;
     let header = {
@@ -103,7 +103,7 @@ function updateGear(){
     body["buildname"] = buildnameinput;
 
     let method = "PUT";
-    let url = `http://localhost:9000/character/${id}`
+    let url = `http://35.246.117.181:9000/character/${id}`
 
     let callback = () => {console.log(request.response)};
     let header = {
