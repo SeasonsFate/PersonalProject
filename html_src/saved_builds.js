@@ -1,7 +1,4 @@
 function populateTable(req){
-    console.log(req)
-
-    // location.reload();
 
     const allBuilds = JSON.parse(req.response);
 
@@ -27,7 +24,7 @@ function populateTable(req){
         deleteButtonEl.innerText = 'Delete';
         deleteButtonEl.type = 'button';
         deleteButtonEl.className = 'btn btn-danger';
-        deleteButtonEl.setAttribute("id",build["id"])
+        deleteButtonEl.setAttribute("id",build["id"]);
         //deleteButtonEl.addEventListener('click',console.log(build["id"]));
         deleteButtonEl.setAttribute("onclick","deleteBuild(this.id)");
         //deletebuild(build["id"]);
@@ -36,11 +33,11 @@ function populateTable(req){
         editButtonEl.innerText = 'View';
         editButtonEl.type = 'button';
         editButtonEl.className = 'btn btn-success';
-        editButtonEl.setAttribute("data-toggle","modal")
-        editButtonEl.setAttribute("data-target","#gearModal")
-        editButtonEl.setAttribute("id",build["id"])
+        editButtonEl.setAttribute("data-toggle","modal");
+        editButtonEl.setAttribute("data-target","#gearModal");
+        editButtonEl.setAttribute("id",build["id"]);
 
-        editButtonEl.setAttribute("name",build["buildname"])
+        editButtonEl.setAttribute("name",build["buildname"]);
 
         editButtonEl.setAttribute("onclick","updateField(this.id,this.name)");
 
@@ -55,15 +52,15 @@ function populateTable(req){
     
 }
 
-function deleteBuild(clicked_id){
-    console.log(clicked_id);
+function deleteBuild(clickedId){
+    console.log(clickedId);
 
     let method = "DELETE";
-    let url = `http://35.246.117.181:9000/character/${clicked_id}`;
-    let callback = console.warn("delete pressed for build id", clicked_id);
+    let url = `http://35.246.117.181:9000/character/${clickedId}`;
+    let callback = console.warn("delete pressed for build id", clickedId);
     let header = {
         "Content-Type": "application/json"
-    }
+    };
     httpRequest(method,url,callback,header);
 
     location.reload();
@@ -77,7 +74,7 @@ function getBuilds(){
     let callback = populateTable;
     let header = {
         "Content-Type": "application/json"
-    }
+    };
     httpRequest(method, url, callback, header);
 }
 
@@ -103,20 +100,22 @@ function updateGear(){
     body["buildname"] = buildnameinput;
 
     let method = "PUT";
-    let url = `http://35.246.117.181:9000/character/${id}`
+    let url = `http://35.246.117.181:9000/character/${id}`;
 
-    let callback = () => {console.log(request.response)};
+    let callback = () => {
+        console.log(request.response);
+    };
     let header = {
         "Content-Type": "application/json"
-    }
+    };
     httpRequest(method, url, callback, header, JSON.stringify(body));
     location.reload();
     return false;
  }
 
-function updateField(clicked_id,clicked_name){
+function updateField(clickedId,clickedName){
     let buildId = document.getElementById("buildId");
-    buildId.setAttribute("value",clicked_id)
-    let buildName = document.getElementById("buildName")
-    buildName.setAttribute("value",clicked_name)
+    buildId.setAttribute("value",clickedId);
+    let buildName = document.getElementById("buildName");
+    buildName.setAttribute("value",clickedName);
 }
