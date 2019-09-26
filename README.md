@@ -35,6 +35,24 @@ The build and deployment processes were automated using Jenkins, with a webhook 
 
 This application can run both locally using a localhost server or externally via a GCP instance, however Jenkins only runs when deploying to a GCP instance.
 
+### Technologies used
+
+* H2 Database - Database
+* Java - API Logic
+* Jenkins - CI Server
+* Maven - Dependecy Management
+* Surefire - Test Reporting
+* JUnit - Unit Testing
+* [Trello](https://trello.com/b/BTtRh9le/solo-project) - Project Tracking
+* GCP - Live Environment
+* Github - VCS
+  * [Front End](https://github.com/SeasonsFate/PersonalProject)
+  * [API](https://github.com/SeasonsFate/PersonalProjectAPI)
+  * [Selenium Tests](PersonalProjectSelenium)
+
+
+
+
 ## Improvements for the Future
 
 In my current build, as previously stated I am not currently using foreign keys to make my databases. In my next sprint, I would like to change the functionality on the backend to allow for this. This would then allow me to add upgrade levels for each of the items in a further database without having to add a large amount of data manually to the tables.
