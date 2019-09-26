@@ -2,6 +2,7 @@
 
 ## Brief
 
+To create an OOP-based application with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training.
 
 ### Solution
 
@@ -20,7 +21,13 @@ The final solution consisted of having 2 tables  that has no relation between th
 
 ## Testing
 
-For testing in this project I have used Selenium, JUnit and Mockito for automated testing.
+For testing in this project I have used Selenium, JUnit and Mockito for automated testing. I currently have no selenium tests working.
+
+### Report
+
+[Link to Surefire Report](/Documents/surefire-report.pdf)
+
+Test coverage for the backend is at 86% line coverage and 100% class coverage.
 
 ## Depolyment
 
@@ -34,3 +41,6 @@ In my current build, as previously stated I am not currently using foreign keys 
 
 In later sprints i would like to add login functionality to the system. This would allow users to choose whether the build that they make is public or private and would prevent one user from being able to delete a build created by another person.
 
+## Author
+
+Alex Brew
