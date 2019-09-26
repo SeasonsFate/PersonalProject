@@ -140,7 +140,7 @@ function onSavePressed(form) {
     let i = 0;
     for (let option of namedOptions) {
         let selected = option.selectedIndex;
-        usrvalue = option.options[selected].value;
+        let usrvalue = option.options[selected].value;
         body[types2[i++].name.toLowerCase()] = usrvalue;
     }
 
