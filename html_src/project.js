@@ -127,7 +127,7 @@ function maxLength(data) {
     let maximum = data[0].type
     for (let j = 1; j < data.length; j++) {
         if (data[j].type > data[j - 1].type) {
-            maximum = data[j].type
+            maximum = data[j].type;
         }
     }
     return maximum;
@@ -162,7 +162,9 @@ function onSavePressed(form) {
     let method = "POST";
     let url = "http://35.246.117.181:9000/character";
 
-    let callback = (request) => { console.log(request.response) };
+    let callback = (request) => { 
+        console.log(request.response); 
+    };
     let header = {
         "Content-Type": "application/json"
     }
