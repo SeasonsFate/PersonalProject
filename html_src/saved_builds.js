@@ -53,8 +53,6 @@ function populateTable(req){
 }
 
 function deleteBuild(clickedId){
-    console.log(clickedId);
-
     let method = "DELETE";
     let url = `http://35.246.117.181:9000/character/${clickedId}`;
     let callback = console.warn("delete pressed for build id", clickedId);
@@ -69,7 +67,7 @@ function deleteBuild(clickedId){
 
 function getBuilds(){
     let method = "GET";
-    let url = "http://35.246.117.181:9000/character"
+    let url = "http://35.246.117.181:9000/character";
 
     let callback = populateTable;
     let header = {
@@ -82,14 +80,9 @@ function getBuilds(){
 function updateGear(){
 
     let id = document.getElementById("buildId").value;
-    console.log("here",id);
     let buildnameinput = document.getElementById("buildName").value;
-    console.log("here",name);
-
     let body = {};
-
     let namedOptions = document.getElementsByClassName("custom-select");
-    console.log(namedOptions);
     let i = 0;
     for (let option of namedOptions) {
         let selected = option.selectedIndex;

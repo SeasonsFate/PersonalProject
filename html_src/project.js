@@ -27,16 +27,10 @@ function httpRequest(method, url, callback, headers, body) {
 //     if (generateRingCount == 0) {
 //         let selector = document.getElementById("selectorring");
 //         data = JSON.parse(request.response);
-//         console.log(data);
-//         //console.log("yes");
-//         //console.log(maxLength(data));
-//         //console.log(data[0].type);
 //         for (let j = 1; j <= maxLength(data); j++) {
 //             for (let i = 0; i < data.length; i++) {
-//                 if (data[i].type == 1 && j == 1) {
-//                     //console.log(i);
+//                 if (data[i].type == 1 && j == 1) {                 
 //                     let option = document.createElement("OPTION");
-//                     //console.log(data[j].name);
 //                     option.innerHTML = data[i].name;
 //                     selector.appendChild(option);
 //                     generateRingCount++;
@@ -50,7 +44,6 @@ function httpRequest(method, url, callback, headers, body) {
 //             }
 //         }
 //     } else {
-//         console.log("Already generated");
 //     }
 // }
 
@@ -73,13 +66,12 @@ function populateGearOptions(req) {
 
 
 function getGear() {
-    //console.log("here")
     let method = "GET";
     let url = "http://35.246.117.181:9000/item";
     let callback = populateGearOptions;
     let header = {
         "Content-Type": "application/json"
-    }
+    };
 
     httpRequest(method, url, callback, header);
 
@@ -116,15 +108,15 @@ function cloneobj() {
         // }else{
         //     getGear(clicked_id)
         // }
-        getGear()
+        getGear();
         clonedModal++;
     } else {
-        console.log("already cloned");
+        clonedModal++;
     }
 }
 
 function maxLength(data) {
-    let maximum = data[0].type
+    let maximum = data[0].type;
     for (let j = 1; j < data.length; j++) {
         if (data[j].type > data[j - 1].type) {
             maximum = data[j].type;
@@ -141,12 +133,10 @@ function onSavePressed(form) {
     // for(let i = 0; i < e.length; i++){
 
     //     usrvalue[i] = e[i].options[e[i].selectedIndex].value;
-    //     console.log(usrvalue);
     //     body[types2[i].name.toLowerCase()] = usrvalue[i]
     // }
 
     let namedOptions = document.getElementsByClassName("custom-select");
-    console.log(namedOptions);
     let i = 0;
     for (let option of namedOptions) {
         let selected = option.selectedIndex;
@@ -155,7 +145,6 @@ function onSavePressed(form) {
     }
 
     let buildnameinput = document.getElementById("buildnameinput").value;
-    //console.log(buildname);
 
     body["buildname"] = buildnameinput;
 
@@ -167,7 +156,7 @@ function onSavePressed(form) {
     };
     let header = {
         "Content-Type": "application/json"
-    }
+    };
 
     httpRequest(method, url, callback, header, JSON.stringify(body));
     //method, url, callback, headers, body
