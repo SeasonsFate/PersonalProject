@@ -58,6 +58,7 @@ The build and deployment processes were automated using Jenkins, with a webhook 
 This application can run both locally using a localhost server or externally via a GCP instance, however Jenkins only runs when deploying to a GCP instance.
 
 <a name = "tech"></a>
+![CIPipeline](Documents/CIPipeline.png)
 ### Technologies used
 
 * H2 Database - Database
