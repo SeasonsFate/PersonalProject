@@ -18,7 +18,7 @@ function httpRequest(method, url, callback, headers, body) {
 
     request.onload = () => {
         callback(request);
-    }
+    };
 
     body ? request.send(body) : request.send();
 }
@@ -51,7 +51,7 @@ function populateGearOptions(req) {
     const allGear = JSON.parse(req.response);
 
     for (let gear of allGear) {
-        const typeObj = types2.find(val => gear.type == val.typeId);
+        const typeObj = types2.find((val) => gear.type == val.typeId);
         const selectEl = typeObj.elementRef.getElementsByTagName('select')[0];
         const gearOptionEl = document.createElement('option');
         gearOptionEl.value = gear.id;
