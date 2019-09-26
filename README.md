@@ -29,7 +29,7 @@ For testing in this project I have used Selenium, JUnit and Mockito for automate
 
 Test coverage for the backend is at 86% line coverage and 100% class coverage.
 
-## Depolyment
+## Deployment
 
 The build and deployment processes were automated using Jenkins, with a webhook to GitHub that calls commands in a JenkinsFile there.
 
