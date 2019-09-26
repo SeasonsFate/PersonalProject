@@ -1,9 +1,28 @@
 # Personal Project Black Desert Build Planner
 
+## Index
+[Brief](#brief)
+   * [Solution](#solution)
+	
+[Testing](#testing)
+   * [Report](#report)
+
+     
+[Deployment](#deployment)
+   * [Technologies Used](#tech)
+     
+[Front End Design](#FE)
+
+[Improvements for the Future](#improve)
+
+[Authors](#auth)
+
+<a name = "brief"></a>
 ## Brief
 
 To create an OOP-based application with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training.
 
+<a name = "Solution"></a>
 ### Solution
 
 I have decided to make a Planner for the MMO Black Desert Online which would allow the user to create, see, update and delete builds with certain selections of items.
@@ -19,22 +38,26 @@ My inital plan for the project consisted of having 3 tables, 1 for the Items, 1 
 
 The final solution consisted of having 2 tables  that has no relation between the databses as this was achievable to make a backend for, however I do have the SQL to generate the tables as described in my intial swolution.
 
+<a name = "testing"></a>
 ## Testing
 
 For testing in this project I have used Selenium, JUnit and Mockito for automated testing. I currently have no selenium tests working.
 
+<a name = "report"></a>
 ### Report
 
 [Link to Surefire Report](/Documents/surefire-report.pdf)
 
 Test coverage for the backend is at 86% line coverage and 100% class coverage.
 
+<a name = "deployment"></a>
 ## Deployment
 
 The build and deployment processes were automated using Jenkins, with a webhook to GitHub that calls commands in a JenkinsFile there.
 
 This application can run both locally using a localhost server or externally via a GCP instance, however Jenkins only runs when deploying to a GCP instance.
 
+<a name = "tech"></a>
 ### Technologies used
 
 * H2 Database - Database
