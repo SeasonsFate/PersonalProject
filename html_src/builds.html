@@ -3,12 +3,13 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <head>
+        <link rel="shortcut icon" href="">
     <title>
         Black Desert Build Planner
     </title>
 </head>
 
-<body>
+<body onload=" cloneobj()">
 
     <!-- <button onclick="getGear()">Clicky</button> -->
 
@@ -74,20 +75,21 @@
         <input type="submit" value="Save">
     </form> -->
 
-    <form id="buildform" onsubmit="return handleForm()">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01" id="item_type"></label>
-            </div>
-            <select class="custom-select" onclick="console.log('cheese')">
-                <option selected>Options...</option>
-                <div id="options">
-
-                    <option id="blank"></option>
+    <form id="buildform" onsubmit="return onSavePressed(this)">
+        <div id="dest">
+            <div class="input-group mb-3" id="toclone">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01" id="item_type" name="type-label">...</label>
                 </div>
-            </select>
+                <select id="selectorring" class="custom-select">
+                    <option selected>Options...</option>
+                </select>
+            </div>
         </div>
+        <div class="form-group">
+                <label for="buildnameinput">Build Name</label>
+                <input class="form-control" id="buildnameinput" placeholder="Enter Build Name">
+              </div>
         <input type="submit" value="Save">
     </form>
 
